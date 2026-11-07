@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Diwali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Mukta:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --night:#120a2b; --deep:#1d1040; --marigold:#ffb627; --saffron:#ff7a1a;
+  --rani:#e8337a; --cream:#fff1d6; --muted:#c9b9e8;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{
+  margin:0;background:var(--night);color:var(--cream);
+  font-family:"Mukta",system-ui,sans-serif;font-size:1.1rem;line-height:1.65;
+  background-image:radial-gradient(ellipse at 50% 0%,#3b1a6b 0%,transparent 60%),radial-gradient(ellipse at 50% 100%,#4a1650 0%,transparent 55%);
+  background-attachment:fixed;overflow-x:hidden;
+}
+#sky{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+main{position:relative;z-index:2}
+section{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:4rem 1.4rem}
+h1,h2,h3{font-family:"Yatra One",Georgia,serif;font-weight:400;margin:0;line-height:1.1}
+h1{font-size:clamp(3.4rem,14vw,9rem);color:var(--marigold);text-shadow:0 0 30px #ff9a1a99,0 0 80px #ff5a1a66;letter-spacing:.01em}
+h2{font-size:clamp(2rem,7vw,3.6rem);color:var(--marigold);margin-bottom:1rem}
+p{max-width:34rem;margin:.8rem auto;color:var(--cream)}
+.sub{color:var(--muted);font-size:1.15rem}
+.hint{margin-top:2.5rem;color:var(--muted);font-size:.95rem;animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+
+/* hero diya */
+.hero-diya{width:120px;height:80px;position:relative;margin:0 auto 1.4rem}
+.bowl{position:absolute;bottom:0;left:0;right:0;height:44px;background:linear-gradient(#e8742a,#9c3a12);border-radius:8px 8px 70px 70px/8px 8px 44px 44px;box-shadow:0 0 40px #ff7a1a88}
+.flame,.diya .fl{position:absolute;left:50%;bottom:38px;width:22px;height:42px;margin-left:-11px;background:radial-gradient(ellipse at 50% 75%,#fff6c8 0%,#ffc83a 40%,#ff7a1a 75%,transparent 80%);border-radius:50% 50% 50% 50%/65% 65% 35% 35%;filter:drop-shadow(0 0 12px #ffb627);transform-origin:50% 100%;animation:flick .18s infinite alternate}
+@keyframes flick{from{transform:scale(1,1) rotate(-2deg)}to{transform:scale(.92,1.08) rotate(2deg)}}
+
+/* diyas */
+.row{display:flex;gap:clamp(.6rem,3vw,1.6rem);justify-content:center;flex-wrap:wrap;margin:2rem 0 1rem}
+.diya{width:68px;height:80px;position:relative;background:none;border:0;cursor:pointer;padding:0;border-radius:12px}
+.diya:focus-visible{outline:3px solid var(--marigold);outline-offset:4px}
+.diya .bowl{height:34px;background:linear-gradient(#5a3a6e,#2b1a45);box-shadow:none;transition:.5s}
+.diya .fl{opacity:0;transform:scale(.2);transition:.5s;bottom:30px;width:18px;height:34px;margin-left:-9px;animation:none}
+.diya.lit .bowl{background:linear-gradient(#e8742a,#9c3a12);box-shadow:0 0 36px #ff7a1a99}
+.diya.lit .fl{opacity:1;transform:scale(1);animation:flick .18s infinite alternate}
+#count{color:var(--muted);min-height:1.7em}
+
+/* days */
+.days{display:grid;gap:1rem;width:min(100%,38rem);margin-top:1.5rem;text-align:left}
+.day{padding:1rem 1.2rem;border-left:4px solid var(--rani);background:#ffffff0d;border-radius:0 14px 14px 0}
+.day:nth-child(2n){border-color:var(--saffron)}
+.day:nth-child(3n){border-color:var(--marigold)}
+.day h3{font-size:1.35rem;color:var(--cream)}
+.day p{margin:.2rem 0 0;color:var(--muted);font-size:1rem}
+
+/* wish */
+.wish{width:min(100%,30rem)}
+input{width:100%;font:inherit;padding:.85rem 1.1rem;border-radius:999px;border:2px solid #ffffff33;background:#ffffff12;color:var(--cream);text-align:center;margin-top:1rem}
+input::placeholder{color:#c9b9e8bb}
+input:focus-visible{outline:3px solid var(--marigold);border-color:transparent}
+#greet{font-family:"Yatra One",Georgia,serif;font-size:clamp(1.6rem,6vw,2.6rem);color:var(--cream);margin-top:1.6rem;min-height:2.4em}
+.btn{font:inherit;font-weight:600;margin-top:1.4rem;padding:.9rem 2rem;border:0;border-radius:999px;background:linear-gradient(90deg,var(--saffron),var(--rani));color:#fff;cursor:pointer;box-shadow:0 8px 30px #e8337a55}
+.btn:focus-visible{outline:3px solid var(--marigold);outline-offset:4px}
+.btn:active{transform:scale(.97)}
+.acts{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1.2rem}
+.acts .btn{margin-top:0;text-decoration:none;display:inline-block}
+.btn.wa{background:linear-gradient(90deg,#1fb855,#128c3e);box-shadow:0 8px 30px #1fb85555}
+.btn.alt{background:#ffffff1f;box-shadow:none}
+.tip{font-size:.9rem;color:var(--muted);margin-top:1rem}
+footer{position:relative;z-index:2;text-align:center;padding:1rem 1rem 3rem;color:var(--muted);font-size:.95rem}
+@media (prefers-reduced-motion:reduce){.flame,.fl,.hint{animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<main>
+  <section id="top">
+    <div class="hero-diya" aria-hidden="true"><div class="flame"></div><div class="bowl"></div></div>
+    <h1>Happy Diwali</h1>
+    <p class="sub" id="subline">May your home glow with light, laughter, and sweet things.</p>
+    <div class="hint">Scroll down. The sky is waiting ↓</div>
+  </section>
+
+  <section id="diyas">
+    <h2>Light the diyas</h2>
+    <p>Tap each lamp. When all five are glowing, something special happens.</p>
+    <div class="row" id="row"></div>
+    <div id="count" aria-live="polite">0 of 5 lit</div>
+  </section>
+
+  <section id="days">
+    <h2>Five days of light</h2>
+    <div class="days">
+      <div class="day"><h3>Dhanteras</h3><p>Welcome new beginnings and good fortune. Many families buy something small and shiny.</p></div>
+      <div class="day"><h3>Naraka Chaturdashi</h3><p>Light early lamps and let go of what weighs you down.</p></div>
+      <div class="day"><h3>Lakshmi Puja</h3><p>The main night. Homes fill with diyas, rangoli, prayers, and fireworks.</p></div>
+      <div class="day"><h3>Govardhan Puja</h3><p>A day of gratitude, feasting, and fresh starts.</p></div>
+      <div class="day"><h3>Bhai Dooj</h3><p>Siblings celebrate their bond with tilak, gifts, and sweets.</p></div>
+    </div>
+  </section>
+
+  <section id="wish">
+    <div class="wish">
+      <h2>Send a wish</h2>
+      <p>Add their name and yours, then send the greeting.</p>
+      <input id="name" type="text" maxlength="30" placeholder="Their name" autocomplete="off" aria-label="Their name">
+      <input id="from" type="text" maxlength="30" placeholder="Your name (optional)" autocomplete="off" aria-label="Your name">
+      <div id="greet" aria-live="polite">Happy Diwali!</div>
+      <div class="acts">
+        <a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">Share on WhatsApp</a>
+        <button class="btn alt" id="cp" type="button">Copy link</button>
+        <button class="btn alt" id="sh" type="button" hidden>More apps</button>
+        <button class="btn alt" id="boom" type="button">Light up the sky</button>
+      </div>
+      <p class="tip">Your friend opens the link and sees a Diwali greeting with their name.</p>
+    </div>
+  </section>
+</main>
+<footer>Made with love and light. Shubh Deepavali.</footer>
+
+<script>
+(function(){
+  var cv=document.getElementById('sky'),ctx=cv.getContext('2d');
+  var W,H,dpr=Math.min(window.devicePixelRatio||1,2);
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rockets=[],parts=[];
+  var palettes=[['#ffb627','#ff7a1a','#fff1d6'],['#e8337a','#ff9ac1','#ffd6e8'],['#7df9ff','#6aa8ff','#e0f4ff'],['#9dff7a','#ffe36a','#fff8c8'],['#c77dff','#ff7ad9','#f1d6ff'],['#ffffff','#ffd27a','#ffb627']];
+  function size(){W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  addEventListener('resize',size);size();
+
+  function launch(x,y){
+    var tx=x==null?W*(.12+Math.random()*.76):x;
+    var ty=y==null?H*(.12+Math.random()*.38):y;
+    rockets.push({x:tx+(Math.random()-.5)*80,y:H+10,tx:tx,ty:ty,vy:-(11+Math.random()*3),c:palettes[Math.random()*palettes.length|0]});
+  }
+  function burst(x,y,pal){
+    var n=70+(Math.random()*50|0),type=Math.random();
+    for(var i=0;i<n;i++){
+      var a=Math.PI*2*i/n,s=type<.5?2+Math.random()*4.2:(i%2?3.6:2.2);
+      if(type>.8)s*=(1+.6*Math.sin(a*5));
+      parts.push({x:x,y:y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:1,d:.011+Math.random()*.012,c:pal[Math.random()*pal.length|0],r:1.4+Math.random()*1.4});
+    }
+    for(var j=0;j<14;j++)parts.push({x:x,y:y,vx:(Math.random()-.5)*1.4,vy:(Math.random()-.5)*1.4,life:1,d:.03,c:'#ffffff',r:1});
+  }
+  function frame(){
+    ctx.globalCompositeOperation='destination-out';
+    ctx.fillStyle='rgba(0,0,0,.22)';ctx.fillRect(0,0,W,H);
+    ctx.globalCompositeOperation='lighter';
+    for(var i=rockets.length-1;i>=0;i--){
+      var r=rockets[i];r.y+=r.vy;r.vy*=.985;r.x+=(r.tx-r.x)*.03;
+      ctx.fillStyle='#ffd27a';ctx.beginPath();ctx.arc(r.x,r.y,2,0,6.3);ctx.fill();
+      if(r.y<=r.ty||r.vy>-2.2){burst(r.x,r.y,r.c);rockets.splice(i,1)}
+    }
+    for(var k=parts.length-1;k>=0;k--){
+      var p=parts[k];p.x+=p.vx;p.y+=p.vy;p.vx*=.975;p.vy=p.vy*.975+.045;p.life-=p.d;
+      if(p.life<=0){parts.splice(k,1);continue}
+      ctx.globalAlpha=p.life;ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x,p.y,p.r*p.life+.3,0,6.3);ctx.fill();
+    }
+    ctx.globalAlpha=1;
+    requestAnimationFrame(frame);
+  }
+  frame();
+
+  // Scroll-triggered crackers
+  var lastY=scrollY,acc=0;
+  addEventListener('scroll',function(){
+    if(reduce){lastY=scrollY;return}
+    acc+=Math.abs(scrollY-lastY);lastY=scrollY;
+    while(acc>130){acc-=130;if(rockets.length<7){launch();if(Math.random()<.3)launch()}}
+  },{passive:true});
+
+  // Tap anywhere (outside controls) to fire
+  addEventListener('pointerdown',function(e){
+    if(e.target.closest('button,input'))return;
+    launch(e.clientX,e.clientY);
+  });
+
+  function salvo(n){for(var i=0;i<n;i++)setTimeout(function(){launch()},i*260)}
+  setTimeout(function(){salvo(reduce?1:3)},500);
+
+  // Diyas
+  var row=document.getElementById('row'),count=document.getElementById('count'),lit=0;
+  for(var d=0;d<5;d++){
+    var b=document.createElement('button');
+    b.className='diya';b.type='button';b.setAttribute('aria-pressed','false');b.setAttribute('aria-label','Diya '+(d+1));
+    b.innerHTML='<div class="fl"></div><div class="bowl"></div>';
+    b.onclick=function(){
+      var on=this.classList.toggle('lit');this.setAttribute('aria-pressed',on);
+      lit+=on?1:-1;
+      if(on){var r=this.getBoundingClientRect();launch(r.left+r.width/2,Math.max(80,r.top-140))}
+      if(lit===5){count.textContent='All five are glowing. Shubh Deepavali!';salvo(8)}
+      else count.textContent=lit+' of 5 lit';
+    };
+    row.appendChild(b);
+  }
+
+  // Wish
+  var nm=document.getElementById('name'),gr=document.getElementById('greet'),sub=document.getElementById('subline');
+  var wa=document.getElementById('wa'),cp=document.getElementById('cp'),sh=document.getElementById('sh');
+  function clean(s){return (s||'').replace(/[<>]/g,'').trim().slice(0,30)}
+  var fm=document.getElementById('from');
+  function link(){
+    var v=clean(nm.value),f=clean(fm.value),u=location.origin+location.pathname,q=[];
+    if(v)q.push('to='+encodeURIComponent(v));
+    if(f)q.push('from='+encodeURIComponent(f));
+    return q.length?u+'?'+q.join('&'):u;
+  }
+  function msg(){
+    var v=clean(nm.value),f=clean(fm.value);
+    return '\uD83E\uDE94 Happy Diwali'+(v?', '+v:'')+'! Wishing you light, joy and lots of sweets.'+(f?' With love, '+f+'.':'')+' Open this for a little surprise: '+link();
+  }
+  function upd(){
+    var v=clean(nm.value);
+    gr.textContent=v?'Happy Diwali, '+v+'!':'Happy Diwali!';
+    wa.href='https://wa.me/?text='+encodeURIComponent(msg());
+  }
+  nm.addEventListener('input',upd);fm.addEventListener('input',upd);upd();
+  wa.addEventListener('click',function(){salvo(3)});
+  cp.onclick=function(){
+    var t=link();
+    function done(){cp.textContent='Copied!';setTimeout(function(){cp.textContent='Copy link'},1800)}
+    try{navigator.clipboard.writeText(t).then(done,function(){prompt('Copy this link',t)})}catch(e){prompt('Copy this link',t)}
+  };
+  if(navigator.share){sh.hidden=false;sh.onclick=function(){navigator.share({title:'Happy Diwali',text:msg()}).catch(function(){})}}
+  document.getElementById('boom').onclick=function(){salvo(reduce?2:10)};
+  // Opened from a shared link: ?to=Name
+  try{
+    var qs=new URLSearchParams(location.search),to=clean(qs.get('to')),from=clean(qs.get('from'));
+    if(to){
+      gr.textContent='Happy Diwali, '+to+'!'+(from?' With love, '+from+'.':'');
+      sub.textContent=to+', may your home glow with light, laughter, and sweet things.'+(from?' With love, '+from+'.':'');
+      setTimeout(function(){salvo(reduce?2:6)},900);
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
